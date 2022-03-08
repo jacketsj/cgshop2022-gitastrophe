@@ -60,13 +60,10 @@ struct conflict_improver {
     while (cnt[bad_colour] > mn) bad_colour = rng() % s.num_cols;
     //bad_colour = s.num_cols-1;
     // relabel bad to s.num_cols - 1
-		int badcnt = 0;
     for (size_t i = 0; i < ins.m; i++) {
       if (s.cols[i] == bad_colour) {
-				if (++badcnt <= 1) {
-					bad_edges.push_back(i);
-					bad[i] = 1;
-				}
+        bad_edges.push_back(i);
+        bad[i] = 1;
 				s.cols[i] = s.num_cols-1;
       } else if (s.cols[i] == s.num_cols-1) {
         s.cols[i] = bad_colour;
